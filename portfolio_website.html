@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sashwat Sridhar - Robotics & AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="50" fill="rgba(255,255,255,0.1)"/><circle cx="900" cy="400" r="70" fill="rgba(255,255,255,0.1)"/><circle cx="1100" cy="150" r="40" fill="rgba(255,255,255,0.1)"/><circle cx="200" cy="500" r="60" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .contact-links a:hover::before {
+            left: 0;
+        }
+
+        .contact-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem auto;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            background: #f8f9fa;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .education-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .details {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            height: 300px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .project-card-content {
+            padding: 2rem;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .project-card:hover::before {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .project-card .timeline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .preview {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body h3 {
+            color: #667eea;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            transition: padding-left 0.3s;
+        }
+
+        .skill-category li:hover {
+            padding-left: 10px;
+            color: #667eea;
+        }
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Sashwat Sridhar</h1>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Sashwat Sridhar</h2>
+            <p>Robotics & AI Engineer | Computer Vision Specialist</p>
+            <div class="contact-links">
+                <a href="mailto:sashwatsridhar@gmail.com">Email</a>
+                <a href="tel:6027278756">Phone</a>
+                <a href="https://github.com/sashwatsridhar" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/sashwatsridhar" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a graduate student pursuing a Master of Science in Robotics and Autonomous Systems Engineering with an AI concentration at Arizona State University. My passion lies in developing intelligent systems that make technology more accessible, particularly for individuals with visual impairments. Through my research and projects, I combine computer vision, deep learning, and embedded systems to create real-world solutions that improve people's lives.</p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Master of Science, Robotics and Autonomous Systems Engineering</h3>
+                <div class="details">Arizona State University | Sept 2025 - Sept 2027 | AI Concentration</div>
+            </div>
+            <div class="education-item">
+                <h3>Bachelor of Engineering, Computer Engineering</h3>
+                <div class="details">University of Guelph | Sept 2021 - April 2025</div>
+                <p><strong>Relevant Coursework:</strong> Digital Systems Design, Microcomputer Interfacing, Real-time Systems Design, Wireless Sensor Networks, Embedded Reconfigurable Computing Systems</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Projects & Experience</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openModal('project1')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🤖</div>
+                        <h3>AI-Powered Workplace Assistant</h3>
+                        <div class="timeline">Arizona State University | Aug 2025 - Present</div>
+                        <div class="preview">Computer vision system for visually impaired workers using YOLO-World and SAM2...</div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('project2')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🦯</div>
+                        <h3>Smart Cane for Visual Impairment</h3>
+                        <div class="timeline">University of Guelph | May 2025 - Aug 2025</div>
+                        <div class="preview">Real-time sensor fusion system integrating YOLO-based object detection...</div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('project3')">
+                    <div class="project-card-content">
+                        <div class="project-icon">🏥</div>
+                        <h3>Triage Tech Solutions</h3>
+                        <div class="timeline">University of Guelph | Sept 2024 - April 2025</div>
+                        <div class="preview">Automated triage system with ANN-based classification achieving 91% accuracy...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>C / C++</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>HTML/CSS</li>
+                        <li>MATLAB</li>
+                        <li>VHDL</li>
+                        <li>MIPS & ARM Assembly</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Tools</h3>
+                    <ul>
+                        <li>SolidWorks</li>
+                        <li>AutoCAD</li>
+                        <li>MATLAB</li>
+                        <li>ROS2</li>
+                        <li>Microsoft Office Suite</li>
+                        <li>Git/GitHub</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Engineering Skills</h3>
+                    <ul>
+                        <li>Computer Vision (YOLO, SAM2)</li>
+                        <li>Deep Learning</li>
+                        <li>Embedded Systems</li>
+                        <li>Circuit Design</li>
+                        <li>Project Management</li>
+                        <li>System Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Strong Communication</li>
+                        <li>Teamwork & Collaboration</li>
+                        <li>Problem Solving</li>
+                        <li>Event Organization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="certificates">
+                <div class="certificate-card">
+                    <h3>Large Language Model Specialization</h3>
+                </div>
+                <div class="certificate-card">
+                    <h3>AI: Training for the Road Ahead</h3>
+                </div>
+                <div class="certificate-card">
+                    <h3>SolidWorks Mechanical Design</h3>
+                </div>
+                <div class="certificate-card">
+                    <h3>French Immersion Studies</h3>
+                </div>
+                <div class="certificate-card">
+                    <h3>Red Cross Psychological First Aid</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <div id="project1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal('project1')">&times;</button>
+                <h2>AI-Powered Workplace Assistance System</h2>
+                <p>Graduate Research Assistant | Arizona State University</p>
+                <p>August 2025 - Present</p>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>Developed an advanced computer vision pipeline to create assistive technology for visually impaired workers at a non-profit organization. This system enables real-time monitoring and guidance for workplace tasks, significantly improving accuracy and independence.</p>
+                
+                <h3>Key Achievements</h3>
+                <ul>
+                    <li><strong>95% Object Tracking Accuracy:</strong> Developed computer vision pipeline using YOLO-World and SAM2 to enable real-time video segmentation for assistive technology, achieving exceptional accuracy in object tracking for visually impaired workers</li>
+                    <li><strong>40% Error Reduction:</strong> Engineered AI-powered workplace assistance system that tracks box selection and item sorting activities through text-prompted segmentation, dramatically reducing workplace errors and improving task completion confidence for blind employees</li>
+                    <li><strong>Real-time Processing:</strong> Implemented accessible video analysis solution processing 30+ fps real-time footage to provide audio feedback for package sorting tasks</li>
+                    <li><strong>Significant Impact:</strong> Directly impacting 50+ visually impaired workers' daily productivity and workplace independence</li>
+                </ul>
+
+                <h3>Technologies Used</h3>
+                <ul>
+                    <li>YOLO-World (Object Detection)</li>
+                    <li>SAM2 (Segment Anything Model 2)</li>
+                    <li>Python</li>
+                    <li>Computer Vision Libraries</li>
+                    <li>Real-time Video Processing</li>
+                    <li>Audio Feedback Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="project2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal('project2')">&times;</button>
+                <h2>Smart Cane for Visually Impaired Users</h2>
+                <p>Undergraduate Research Assistant | University of Guelph</p>
+                <p>May 2025 - August 2025</p>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>Developed an intelligent navigation aid for visually impaired individuals by creating a smart cane that combines computer vision, distance sensing, and real-time feedback systems. This project integrates multiple sensor modalities to provide comprehensive obstacle detection and avoidance guidance.</p>
+                
+                <h3>Key Achievements</h3>
+                <ul>
+                    <li><strong>Sensor Fusion System:</strong> Engineered a real-time sensor fusion system on Raspberry Pi 5, integrating YOLO-based object detection and ultrasonic distance sensing via ROS2 to identify obstacles and measure proximity accurately</li>
+                    <li><strong>Dual-Mode Feedback:</strong> Implemented automated feedback system with dual-mode output including audio announcements and haptic vibration patterns based on fused sensor data and object classification confidence thresholds</li>
+                    <li><strong>Real-time Decision Pipeline:</strong> Integrated deep learning object detection (YOLO) with distance sensing to create rule-based decision pipeline for real-time obstacle avoidance alerts on embedded hardware</li>
+                    <li><strong>Embedded AI:</strong> Successfully deployed deep learning models on resource-constrained embedded hardware for real-time performance</li>
+                </ul>
+
+                <h3>Technologies Used</h3>
+                <ul>
+                    <li>Raspberry Pi 5</li>
+                    <li>ROS2 (Robot Operating System)</li>
+                    <li>YOLO (Object Detection)</li>
+                    <li>Ultrasonic Distance Sensors</li>
+                    <li>Python</li>
+                    <li>Audio and Haptic Feedback Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="project3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal('project3')">&times;</button>
+                <h2>Triage Tech Solutions</h2>
+                <p>Capstone Project | University of Guelph</p>
+                <p>September 2024 - April 2025</p>
+            </div>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>Designed and developed an innovative automated triage system to address critical emergency room wait times and optimize healthcare resource allocation. This system integrates multiple vital sign sensors with artificial neural network classification to streamline patient assessment processes.</p>
+                
+                <h3>Key Achievements</h3>
+                <ul>
+                    <li><strong>91% Classification Accuracy:</strong> Designed a triage automation system integrating temperature, blood pressure, and oxygen monitoring sensors with real-time data pipelines and ANN-based classification models achieving 91% accuracy in patient priority assessment</li>
+                    <li><strong>Automated Data Capture:</strong> Designed and implemented sensor-integrated triage chair with automated data capture, real-time report generation, and workflow control systems to optimize hospital operations and streamline resource allocation processes</li>
+                    <li><strong>Reduced Nurse Workload:</strong> Redesigned triage process by developing a fully automated, user-friendly chair system that reduced nurse workload by capturing vitals and prioritizing patients autonomously, allowing staff to focus on critical care tasks</li>
+                    <li><strong>End-to-End Solution:</strong> Created complete hardware and software integration for seamless hospital workflow</li>
+                </ul>
+
+                <h3>Technologies Used</h3>
+                <ul>
+                    <li>Artificial Neural Networks (ANN)</li>
+                    <li>Temperature Sensors</li>
+                    <li>Blood Pressure Monitors</li>
+                    <li>Oxygen Saturation Sensors</li>
+                    <li>Python</li>
+                    <li>Real-time Data Processing</li>
+                    <li>Embedded Systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sashwat Sridhar. All rights reserved.</p>
+        <p>sashwatsridhar@gmail.com | (602)-727-8756</p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
